@@ -83,8 +83,8 @@ public class MirrorReflection : MonoBehaviour
         reflectionCamera.cullingMask = m_ReflectLayers.value;
         reflectionCamera.targetTexture = m_ReflectionTexture;
         reflectionCamera.transform.position = newpos;
-        Vector3 euler = cam.transform.eulerAngles;
-        reflectionCamera.transform.eulerAngles = new Vector3(0, euler.y, euler.z);
+        reflectionCamera.transform.rotation = Quaternion.LookRotation(reflection.MultiplyVector(cam.transform.forward), reflection.MultiplyVector(cam.transform.up));
+        reflectionCamera.ResetWorldToCameraMatrix();
         UniversalRenderPipeline.RenderSingleCamera(context, reflectionCamera);
         reflectionCamera.transform.position = oldpos;
         Material[] materials = m_renderer.sharedMaterials;
@@ -103,7 +103,7 @@ public class MirrorReflection : MonoBehaviour
         mtx = scaleOffset * cam.projectionMatrix * cam.worldToCameraMatrix * mtx;
         foreach (Material mat in materials)
         {
-            mat.SetMatrix("_ProjMatrix", mtx);
+            mat.SetMatrix("_RefProjMatrix", mtx);
         }
 
         s_InsideRendering = false;
