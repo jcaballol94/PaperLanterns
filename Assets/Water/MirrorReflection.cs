@@ -155,6 +155,8 @@ public class MirrorReflection : MonoBehaviour
             if (m_ReflectionTexture)
                 DestroyImmediate(m_ReflectionTexture);
             m_ReflectionTexture = new RenderTexture(m_TextureSize, m_TextureSize, 16);
+            m_ReflectionTexture.useMipMap = true;
+            m_ReflectionTexture.autoGenerateMips = true;
             m_ReflectionTexture.name = "__MirrorReflection" + GetInstanceID();
             m_ReflectionTexture.isPowerOfTwo = true;
             m_ReflectionTexture.hideFlags = HideFlags.DontSave;
