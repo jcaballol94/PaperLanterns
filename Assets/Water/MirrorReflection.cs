@@ -80,7 +80,6 @@ public class MirrorReflection : MonoBehaviour
         CalculateObliqueMatrix(ref projection, clipPlane);
         reflectionCamera.projectionMatrix = projection;
 
-        reflectionCamera.cullingMask = m_ReflectLayers.value;
         reflectionCamera.targetTexture = m_ReflectionTexture;
         reflectionCamera.transform.position = newpos;
         reflectionCamera.transform.rotation = Quaternion.LookRotation(reflection.MultiplyVector(cam.transform.forward), reflection.MultiplyVector(cam.transform.up));
@@ -142,6 +141,7 @@ public class MirrorReflection : MonoBehaviour
         dest.fieldOfView = src.fieldOfView;
         dest.aspect = src.aspect;
         dest.orthographicSize = src.orthographicSize;
+        dest.cullingMask = src.cullingMask;
     }
 
     // On-demand create any objects we need
