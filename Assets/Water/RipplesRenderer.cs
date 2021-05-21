@@ -101,8 +101,8 @@ public class RipplesRenderer : MonoBehaviour
         if (dest == null)
             return;
         // set camera to clear the same way as current camera
-        dest.clearFlags = src.clearFlags;
-        dest.backgroundColor = src.backgroundColor;
+        dest.clearFlags = CameraClearFlags.Color;
+        dest.backgroundColor = Color.black;
         // update other values to match current camera.
         // even if we are supplying custom camera&projection matrices,
         // some of values are used elsewhere (e.g. skybox uses far plane)
@@ -112,6 +112,7 @@ public class RipplesRenderer : MonoBehaviour
         dest.fieldOfView = src.fieldOfView;
         dest.aspect = src.aspect;
         dest.orthographicSize = src.orthographicSize;
+        dest.cullingMask = m_rippleLayers;
     }
 
     // On-demand create any objects we need
