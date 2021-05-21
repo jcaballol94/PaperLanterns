@@ -923,7 +923,7 @@
     },
     "m_Name": "HeightMap",
     "m_DefaultReferenceName": "Texture2D_4a4224ab5e8a4868a861782d9b60d574",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_HeightTex",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
